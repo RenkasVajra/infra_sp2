@@ -14,7 +14,7 @@ from .serializers import (
     SignUpSerializer,
     UserSerializerForUser,
     ConfirmationCodeSerializer
-    )
+)
 from .permissions import IsAdmin, IsOwner
 
 
