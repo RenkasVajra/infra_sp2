@@ -82,12 +82,12 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DB_ENGINE'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        "ENGINE": os.environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': os.environ.get('DB_NAME', 'django.db.backends.postgresql'),
+        'USER': os.environ.get('POSTGRES_USER', 'django.db.backends.postgresql'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'django.db.backends.postgresql'),
+        'HOST': os.environ.get('DB_HOST', 'django.db.backends.postgresql'),
+        'PORT': os.environ.get('DB_PORT', 'django.db.backends.postgresql'),
     }
 }
 
@@ -166,3 +166,15 @@ SIMPLE_JWT = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'  # выше изменения из мастера
+
+DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
+
+DB_NAME=postgres # имя базы данных
+
+POSTGRES_USER=postgres # логин для подключения к базе данных
+
+POSTGRES_PASSWORD=postgres # пароль для подключения к БД (установите свой)
+
+DB_HOST=db # название сервиса (контейнера)
+
+DB_PORT=5432 # порт для подключения к БД
