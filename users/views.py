@@ -14,15 +14,18 @@ from .serializers import (
     SignUpSerializer,
     UserSerializerForUser,
     ConfirmationCodeSerializer
-)
+    )
 from .permissions import IsAdmin, IsOwner
 
 
 class SignUp(APIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny,)
 
-    def post(self, request):
-        serializer = SignUpSerializer(data=request.data)
+    def __init__(self, request):
+        self.request = request
+
+    def post(self):
+        serializer = SignUpSerializer(data=self.request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.validated_data['email']
         user = User.objects.create_user(email, email=email)
