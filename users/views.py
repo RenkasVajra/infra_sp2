@@ -14,7 +14,7 @@ from .serializers import (
     SignUpSerializer,
     UserSerializerForUser,
     ConfirmationCodeSerializer
-    )
+)
 from .permissions import IsAdmin, IsOwner
 
 
@@ -32,7 +32,7 @@ class SignUp(APIView):
             settings.ADMINS_EMAIL,
             [email],
             fail_silently=False,
-            )
+        )
         return Response(status=status.HTTP_201_CREATED)
 
 
@@ -67,7 +67,7 @@ class UserViewSet(viewsets.ModelViewSet):
         detail=False,
         methods=['get', 'patch'],
         permission_classes=[permissions.IsAuthenticated, IsOwner]
-        )
+    )
     def me(self, request):
         if request.method == "GET":
             serializer = UserSerializerForUser(request.user)
@@ -77,7 +77,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 request.user,
                 data=request.data,
                 partial=True
-                )
+            )
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

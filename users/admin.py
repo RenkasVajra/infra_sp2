@@ -12,7 +12,7 @@ class UserAdmin(UserAdmin):
         'bio',
         'email',
         'confirmation_key'
-        )
+    )
     empty_value_display = '-пусто-'
 
 
