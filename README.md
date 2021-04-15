@@ -34,7 +34,14 @@ docker-compose up -d --build
 docker-compose exec web python manage.py createsuperuser
 ```
 ### Заполнение БД начальными данными
-Чтобы заполнить БД, нужно создать данные через админку Django, а затем выполнить команду
+- Чтобы заполнить БД, нужно создать данные через админку Django, а затем выполнить команду
 ```
 docker-compose exec web python manage.py dumpdata > fixtures.json
 ```
+### Переменные окружения
+- DB_ENGINE - указываем, что работаем с postgresql
+- DB_NAME - имя базы данных
+- POSTGRES_USER - логин для подключения к базе данных
+- POSTGRES_PASSWORD - пароль для подключения к БД
+- DB_HOST - название сервиса (контейнера)
+- DB_PORT - порт для подключения к БД
